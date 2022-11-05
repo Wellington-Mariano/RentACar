@@ -19,8 +19,15 @@ import java.io.IOException;
 // INCLUDE HERE THE LINK TO THE GIT REPOSITORY AS A COMMENT!!!!
 
 
-// INCLUDE HERE THE FULL NAME AND STUDENT NUMBER OF BOTH TEAM MEMBERS 
-// AS A COMMENT!!!!
+/*
+    Wellington Diego Mariano 2021330
+    Gheorghita Rata Mda 21563
+    
+    https://github.com/RGeorge482/RentACar
+    https://github.com/Wellington-Mariano/RentACar
+
+*/  
+
 
 public class Driver {
 
