@@ -5,6 +5,7 @@
  */
 package ooc.yoursolution;
 
+import java.util.HashMap;
 import java.util.Map;
 import ooc.enums.Make;
 import ooc.enums.Month;
@@ -13,56 +14,81 @@ import ooc.enums.Month;
  *
  * @author welli
  */
-public class Car implements CarInterface{
+public class Car implements CarInterface {
+
+    private Make make;
+    private double rate;
+    private Map<Month, boolean[]> availability;//MAP HAS KEY MONTH AND VALUE BOOLEAN
+    private int id;
+    private int carQuantity;
 
     @Override
     public Map<Month, boolean[]> createAvailability() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.availability = new HashMap<>();// instantiating a hashmap
+
+        for (Month month : Month.values()) {//FOR EACH USING MONTH AS A TYPE AND VALUES OF MONTH AS PAR
+            boolean[] days = new boolean[month.getNumberOfDays()];//DAYS ARE AN ARRAY O BOOLEANS WITH NUMBER OF DAYS PARAMETER
+
+            int index = 0;
+
+            while (index < days.length) {
+                days = true;
+                //ATTEMPTING TO ASSIGNE TRUE TO ALL DAYS BOOLEAN VALUES
+            }
+            return this.availability;
+        }
     }
 
     @Override
     public Make getMake() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.make;
     }
 
     @Override
     public void setMake(Make make) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.make = make;
     }
 
     @Override
     public double getRate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.rate;
     }
 
     @Override
     public void setRate(double rate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.rate = rate;
     }
 
     @Override
     public Map<Month, boolean[]> getAvailability() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.availability;
     }
 
     @Override
     public void setAvailability(Map<Month, boolean[]> availability) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.availability = availability;
     }
 
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.id;
     }
 
     @Override
     public boolean isAvailable(Month month, int day) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.availability.get(month) && day; //ATTEMPTING OF RETURNING MONTH AND DAY VALUE
     }
 
     @Override
     public boolean book(Month month, int day) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean available = this.isAvailable(month, day);
+
+        if (available) {
+            boolean[] days = this.availability.get(month);
+            days[day] = false;
+            this.availability.put(month, days);
+            return true;
+        }
+        return false;
     }
-    
 }
